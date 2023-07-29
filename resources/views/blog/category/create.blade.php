@@ -17,7 +17,7 @@
             <div class="col-12 grid-margin strecth-card">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('blog.categories.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name">

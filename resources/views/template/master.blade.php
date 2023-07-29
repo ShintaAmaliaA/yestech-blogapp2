@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
-    
+
     @yield('css-content')
 
     {{-- TinyMCE --}}
@@ -347,7 +347,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categories.index') }}">
+                        <a class="nav-link" href="{{ route('blog.categories.index') }}">
                             <i class="icon-folder menu-icon"></i>
                             <span class="menu-title">Categories</span>
                         </a>

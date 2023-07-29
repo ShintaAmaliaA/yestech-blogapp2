@@ -17,7 +17,7 @@
             <div class="col-12 grid-margin strecth-card">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('categories.update', ['id' => $category->id]) }}" method="POST">
+                        <form action="{{ route('blog.categories.update', ['id' => $category->id]) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

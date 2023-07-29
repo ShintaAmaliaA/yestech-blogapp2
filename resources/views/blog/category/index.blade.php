@@ -20,7 +20,7 @@
                         <h4 class="card-title">
                             <div class="d-flex justify-content-between align-items-center">
                                 Categories
-                                <a href="{{ route('categories.create') }}" class="btn btn-primary">Create +</a>
+                                <a href="{{ route('blog.categories.create') }}" class="btn btn-primary">Create +</a>
                             </div>
                         </h4>
                         <div class="table-responsive">
@@ -38,8 +38,8 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>
-                                                <a href="{{ route('categories.edit', ['id' => $category->id]) }}">Edit</a>
-                                                <a href="{{ route('categories.delete', ['id' => $category->id]) }}">Delete</a>
+                                                <a href="{{ route('blog.categories.edit', ['id' => $category->id]) }}">Edit</a>
+                                                <a href="{{ route('blog.categories.delete', ['id' => $category->id]) }}">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

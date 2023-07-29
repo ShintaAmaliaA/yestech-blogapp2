@@ -14,7 +14,7 @@ class TaskController extends Controller
     {
         //
         $tasks = Task::all();
-        return view('task.index', compact('tasks'));
+        return view('blog.task.index', compact('tasks'));
     }
 
     /**
@@ -23,7 +23,7 @@ class TaskController extends Controller
     public function create()
     {
         //
-        return view('task.create');
+        return view('blog.task.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class TaskController extends Controller
         //
         $task = Task::find($id);
 
-        return view('task.show', compact('task'));
+        return view('blog.task.show', compact('task'));
     }
 
     /**
@@ -60,7 +60,7 @@ class TaskController extends Controller
     {
         //
         $task = Task::find($id);
-        return view('task.edit', compact('task'));
+        return view('blog.task.edit', compact('task'));
     }
 
     /**
@@ -76,7 +76,7 @@ class TaskController extends Controller
                 'due_date' => $request->due_date
             ]);
 
-        return redirect()->route('task.index');
+        return redirect()->route('blog.task.index');
     }
 
     /**
