@@ -10,12 +10,12 @@ class PublicPageController extends Controller
 {
     public function homepage () {
         $posts = Post::all();
-        return view('public_pages.homepage', ['posts' => $posts]);
+        return view('blog.public_pages.homepage', ['posts' => $posts]);
     }
 
     public function show ($slug) {
         $post = Post::where('slug', $slug)->first();
         $categories = Category::whereIn('id', $post->categories->pluck('category_id'))->get();
-        return view('public_pages.show', ['post' => $post, 'categories' => $categories]);
+        return view('blog.public_pages.show', ['post' => $post, 'categories' => $categories]);
     }
 }

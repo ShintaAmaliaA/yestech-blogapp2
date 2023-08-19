@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         //
         $posts = Post::all();
-        return view('post.index', compact('posts'));
+        return view('blog.post.index', compact('posts'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('post.create', ['categories' => $categories]);
+        return view('blog.post.create', ['categories' => $categories]);
     }
 
     /**
@@ -52,19 +52,21 @@ class PostController extends Controller
         ]);
 
         $data = [];
-        foreach($request->category_ids as $category_id) {
-            $row = [
-                'post_id' => $post->id, 
-                'category_id' => $category_id, 
-                'created_at' => date('Y-m-d H:i:s', time()), 
-                'updated_at' => date('Y-m-d H:i:s', time())
-            ];
-            array_push($data, $row);
+        if($request->category_ids) {
+            foreach($request->category_ids as $category_id) {
+                $row = [
+                    'post_id' => $post->id,
+                    'category_id' => $category_id,
+                    'created_at' => date('Y-m-d H:i:s', time()),
+                    'updated_at' => date('Y-m-d H:i:s', time())
+                ];
+                array_push($data, $row);
+            }
         }
 
         PostCategory::insert($data);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('blog.post.index');
     }
 
     public static function createSlug($str, $delimiter = '-')
@@ -89,7 +91,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $post = Post::find($id);
-        return view('post.edit', compact('post', 'categories'));
+        return view('blog.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -118,9 +120,9 @@ class PostController extends Controller
         $data = [];
         foreach($request->category_ids as $category_id) {
             $row = [
-                'post_id' => $post->id, 
-                'category_id' => $category_id, 
-                'created_at' => date('Y-m-d H:i:s', time()), 
+                'post_id' => $post->id,
+                'category_id' => $category_id,
+                'created_at' => date('Y-m-d H:i:s', time()),
                 'updated_at' => date('Y-m-d H:i:s', time())
             ];
             array_push($data, $row);
@@ -128,7 +130,7 @@ class PostController extends Controller
 
         PostCategory::insert($data);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('blog.post.index');
     }
 
     /**
@@ -139,6 +141,6 @@ class PostController extends Controller
         //
         Post::destroy($id);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('blog.post.index');
     }
 }

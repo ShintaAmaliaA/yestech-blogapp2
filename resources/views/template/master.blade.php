@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
-    
+
     @yield('css-content')
 
     {{-- TinyMCE --}}
@@ -333,27 +333,28 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('task.index') }}">
+                        <a class="nav-link" href="{{ route('blog.task.index') }}">
                             <i class="icon-check menu-icon"></i>
-                            <span class="menu-title">Task</span>
+                            <span class="menu-title">Tasks</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('posts.index') }}">
+                        <a class="nav-link" href="{{ route('blog.post.index') }}">
                             <i class="icon-paper menu-icon"></i>
                             <span class="menu-title">Post</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categories.index') }}">
+                        <a class="nav-link" href="{{ route('blog.categories.index') }}">
                             <i class="icon-folder menu-icon"></i>
                             <span class="menu-title">Categories</span>
                         </a>
                     </li>
                 </ul>
             </nav>
+
             <!-- partial -->
             <div class="main-panel">
                 @yield('content')

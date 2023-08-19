@@ -9,11 +9,11 @@ class CategoryController extends Controller
 {
     public function index () {
         $categories = Category::all();
-        return view('category.index', ['categories' => $categories]);
+        return view('blog.category.index', ['categories' => $categories]);
     }
 
     public function create () {
-        return view('category.create');
+        return view('blog.category.create');
     }
 
     public function store(Request $request)
@@ -22,12 +22,12 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('blog.categories.index');
     }
 
     public function edit ($id) {
         $category = Category::find($id);
-        return view('category.edit', ['category' => $category]);
+        return view('blog.category.edit', ['category' => $category]);
     }
 
     public function update(Request $request, $id)
@@ -35,12 +35,20 @@ class CategoryController extends Controller
         Category::find($id)->update([
             'name' => $request->name,
         ]);
-        
-        return redirect()->route('categories.index');
+
+        return redirect()->route('blog.categories.index');
     }
 
-    public function destroy ($id) {
-        Category::find($id)->delete();
-        return redirect()->route('categories.index');
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        if ($category) {
+            $category->delete();
+            // Redirect atau response setelah berhasil menghapus data
+        } else {
+            // Redirect atau response jika data tidak ditemukan
+        }
     }
+
 }
